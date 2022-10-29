@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes React</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <style>
+        h1 {
+            color: yellow
+        }
+
+        h2 {
+            color: blueviolet
+        }
+
+        h3 {
+            color: darkolivegreen
+        }
+    </style>
+</head>
+
+<body class="bg-dark">
+    <div class="text-info">
+        <h1>Notes React</h1>
+        <p>Functional Components and Class Components</p>
+        <h2>JSX (JavaScript XML)</h2>
+        <p>JSX is an extension to the JS language syntax. Makes it waaaay easier to use HTML elements. (instead of
+            React.createElement("div",null,React.createElement("h1","Hello World")))</p>
+        <h2>Reserved words</h2>
+        <p>We use className for class because it is reserved for actual JavaScript Classes.</p>
+        <p>for --> htmlFor</p>
+        <p>onclick --> onClick, etc.</p>
+        <h2>Components are reusable</h2>
+        <p>This works thanks to props!</p>
+        <p>We assign the attribute and its value in the component we want.</p>
+        <p>Then, we add "props" as a parameter in our component's function.</p>
+        <p>We can now add the attribute's value in the element we are returning, as many times as we want with
+            {props.attributeName}.</p>
+        <h2>Empty tags</h2>
+        <p>We can return only 1 element, if returning multiple, they must all be wrapped around a single element. (We
+            can use empty tags: <>
+                < />)</p>
+        <h2>props are immutable</h2>
+        <p>Their values can not be changed under any circumstance, we can only reference them in our components. (We can
+            always change the value when declaring them as an attribute.)</p>
+        <h2>props vs state</h2>
+        <p>props</p>
+        <ul>
+            <li>They are passed TO our components.</li>
+            <li>Functions parameters...</li>
+            <li>props are immutable, since they are passed to children components as read-only values. (attribute names
+                and values assigned on parent component.) </li>
+            <li>They can be accessed with props.attributeName.</li>
+        </ul>
+        <p>state</p>
+        <ul>
+            <li>It is managed WITHIN each of our components.</li>
+            <li>Variables declared in the function body...</li>
+            <li>state can be changed</li>
+            <li>They can be accessed with the useState() hook.</li>
+        </ul>
+        <p>Both hold information that affect the UI.</p>
+        <h2>useState()</h2>
+        <p>This is the hook that allows us to have dynamic elements on the UI, they can change depending on our own
+            conditions or events.</p>
+        <p>Always make use of seState, never modify the state directly.</p>
+        <h2>Snippets</h2>
+        <p>useState for auto-import.</p>
+        <p>Any component in App.js we add will auto-import.</p>
+        <p>rfce (React Functional Component Export)</p>
+        <li>It will provide a function component template, and also export default.</li>
+        <h2>Event handling</h2>
+        <p>We can do this by declaring a function inside our functional component that does whatever we want for to
+            happen upon the event being triggered.</p>
+        <p>We can then reference the function. For example: onClick={ourFunction}</p>
+        <h2>Conditional Rendering</h2>
+        <p>(Based on a variable called isLoggedIn set to true or false)</p>
+        <h3>if/else statement</h3>
+        <p>if/else statements must be outside JSX to work.</p>
+        <p>In this case, the else statement was redundant.</p>
+        <li> if (isLoggedIn) {
+        <li>return div Hello Alex /div;</li>
+        <li>}</li>
+        <li>return div Hello Guest /div;</li>
+        </li>
+
+        <h3>Variable element</h3>
+        <p>We declare a variable that will adopt the value we return depending on the condition met.</p>
+
+        <li>let whatWeReturn;</li>
+
+        <li>if (isLoggedIn) {</li>
+        <li>whatWeReturn = div Hello Alex /div;</li>
+        <li>} else {</li>
+        <li>whatWeReturn = div Hello Guest /div;</li>
+        <li>}</li>
+        <h3>Ternary operator</h3>
+        <p>This approach DOES WORK inside JSX.</p>
+        <li> return isLoggedIn ? div Hello Alex /div : div Hello Guest /div;
+        </li>
+        <h3>Short circuit Operator</h3>
+        <p>We use it when we want to have our code run ONLY IF the condition is met, if it does not, we won't run
+            ANYTHING.</p>
+        <p>The expression is evaluated from left to right. In this case, if the left is true, the right will be returned
+            as JSX. </p>
+        <p>If the left is false, the right will not be reached at all, regardless of if it's true or false.</p>
+        <li> return isLoggedIn && div Hello Alex /div;
+        </li>
+    </div>
+</body>
+
+</html>
