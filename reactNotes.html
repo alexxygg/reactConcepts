@@ -28,7 +28,7 @@
         <h1>Notes React</h1>
         <p>Functional Components and Class Components</p>
         <h2>JSX (JavaScript XML)</h2>
-        <p>JSX is an extension to the JS language syntax. Makes it waaaay easier to use HTML elements. (instead of
+        <p>JSX is an extension to the JS language syntax. Makes it a lot easier to use HTML elements. (instead of
             React.createElement("div",null,React.createElement("h1","Hello World")))</p>
         <h2>Reserved words</h2>
         <p>We use className for class because it is reserved for actual JavaScript Classes.</p>
@@ -110,6 +110,113 @@
         <p>If the left is false, the right will not be reached at all, regardless of if it's true or false.</p>
         <li> return isLoggedIn && div Hello Alex /div;
         </li>
+        <h2>map()</h2>
+        <p>We can iterate through arrays and return a new array with this method!</p>
+        <p>It accepts a function as an argument.</p>
+        <p>Here we list an array of the 12 months in a year:</p>
+        <li> const listedMonths = arrayMonths.map((month) =>
+            li {month} /li);</li>
+        <li> return listedMonths;</li>
+        <h2>key={}</h2>
+        <p>Each element in a list needs a unique key. Normally we assign the object's id as the jey, but it can be
+            anything, like the name ,etc.</p>
+        <p>It gives the elements a stable identity.</p>
+        <p>***THE KEY PROPS IS NOT ACCESSIBLE IN CHILD COMPONENTS., IT WILL NOT RENDER EVEN WHEN "DESTRUCTURED".</p>
+        <p>(WE SHOULD NOT USE IT IN CHILD COMPONENTS.)</p>
+        <p>They help us render our lists efficiently. They also help React identify which elements have changed, were
+            added, or were removed. It does all this in a much more efficient way, instead of iterating through every
+            single element in order.</p>
+        <h3>With simple arrays</h3>
+        <p>When working with arrays that do not have ids or any unique value, we can use the array element's index as a
+            key.</p>
+        <p>We map over our array like normally, except that the callback function we use will take a second parameter
+            this time. It is by default the index of the element and can be called anything we want, although normally
+            just index.</p>
+        <li> const listedMonths = arrayMonths.map((month, index) => (li key={index}>{month} /li>))</li>
+        <li>THERE MAY BE PROBLEMS WITH THIS APPROACH, IF WE CREATE A NEW ELEMENT AND ADD IT TO THE START OF THE ARRAY,
+            IT WILL NOW HAVE AN INDEX OF 0 WITH A KEY OF 0. REACT WILL GIVE OUR NEW ELEMENT THE DATA COMING FROM THE
+            ORIGINAL ELEMENT WITH AN INDEX OF 0.</li>
+        <h3>When to use it? (All conditions should be met)</h3>
+        <li>The list items DO NOT have a unique id.</li>
+        <li>The list is static and will never change.</li>
+        <li>The list will never be REORDERED or FILTERED.</li>
+        <p>There are npm packages that create unique ids for each element.</p>
+        <p>(REACT USES THE INDEX AS THE KEY BY DEFAULT OF WE DO NOT PROVIDE IT!!!)</p>
+        <h2>CSS in React</h2>
+        <p>We can do this is 4 ways:</p>
+        <h3>CSS stylesheets</h3>
+        <p>We must create a Stylesheet.js file and also a CSS file. In the JS we must import the css file.</p>
+        <p>We can now use any of our declared styles from our css file and apply them on our elements with className.
+        </p>
+        <p>We can even use conditionals on the element we import to App.js, like setting something to true r false. Then
+            on our Stylesheet.js we include props as a parameter and play with the attribute we declared previously.</p>
+        <h3>Inline styling</h3>
+        <p>For this approach we only need the Inline.js component file.</p>
+        <p>We can then create a single or multiple objects, where each key value pair is the CAMELCASE VERSION of the
+            style and our preferred specification for it.
+        </p>
+        <p>Finally, we pass in our variable to style={}</p>
+        <h3>CSS modules</h3>
+        <p>The naming convention is that our stylesheet must have .modules.css after the name we give it.</p>
+        <p>Classes are locally scoped by default, so the classes can only be used in parent components, were our styles
+            were imported to. We can't use a class that was made for another component, which helps prevent
+            accidents.</p>
+        <h3>CSS in JS libraries</h3>
+        <h2>Form Handling</h2>
+        <h3>Controlled Components (by React)</h3>
+        <p>User inputs may change due to user interaction, which we can handle with useState.</p>
+        <p>We assign new states as updated values to have the new data available upon form submission.</p>
+        <h2>Fragments <>
+                < />
+        </h2>
+        <p>Since React expects a single element to be returned from our functional components, we can wrap any number of
+            elements around a single other element.</p>
+        <p>If we don't want the parent element we use to appear in the DOM, we can use empty opening and closing tags
+            around our elements. (Previously done with React.Fragment opening and closing elements.)</p>
+        <p>"key" can be passed into a React.Fragment returning statement. (DOESN'T WORK WITH SHORTHAND EMPTY TAGS!)</p>
+        <h2>Pure components</h2>
+        <p>These components can only be created with classes by extending the PureComponent class. They will only
+            rerender when a change is detected between
+            the value passed to our elements. We can specify an interval to check, and if no changes, it will not
+            change.</p>
+        <p>They prevent unnecessary render and are better for performance.</p>
+        <h2>refs</h2>
+        <p>They make it possible to access DOM nodes.</p>
+        <p>They are used in classes, we have the useRef hook for functional components.</p>
+        <h2>Portals</h2>
+        <p>We can create nodes outside the #root div by adding a second div to our index.html file.</p>
+        <p>We create our portal element and import React and ReactDOM. We can then include it our App.js file.</p>
+        <p>The portal element must use ReactDOM.createPortal(), which takes two parameters...</p>
+        <li>The first is the element, the second is an identifier/reference for the new portal we made in index.html.
+        </li>
+        <p>Example--> return ReactDOM.createPortal(h1 Portals Demo /h1, document.getElementById("portalRoot"));</p>
+        <p>This will insert our component into whichever portal we want.</p>
+        <p>This may be useful when working with parent's components CSS.</p>
+        <p>(They behave like any other element when bubbling. So we can interact with background elements inside a
+            portal pop-up, for example.)</p>
+        <h2>Error handling phase methods</h2>
+        <p>Used in classes. A fallback UI instead of the component tree that crashed.</p>
+        <h2>Context</h2>
+        <p>Context helps us pass data through the component tree without having to pass props down manually one by one
+            each element.
+        </p>
+        <p>In functional components, this is done by wrapping our elements in another main element, which passes a key
+            and its value to all of the children elements inside it.</p>
+
+        <li>
+            < ThingsProvider value={things}>
+        </li>
+        <li>
+            < ListContainer />
+        </li>
+        <li>
+            < GraphContainer />
+        </li>
+        <li>
+            < /ThingsProvider>
+        </li>
+        <h2>HTTP and React</h2>
+        <p>Our React apps send data to the server</p>
     </div>
 </body>
 
